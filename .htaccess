@@ -1,0 +1,31 @@
+RewriteEngine on
+
+# SSL certificate ---
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Disable Directory Browsing ---
+Options All -Indexes
+
+RewriteRule ^home?$ index.php?go=home
+RewriteRule ^scoreboard?$ index.php?go=scoreboard
+RewriteRule ^login?$ index.php?go=login
+RewriteRule ^registration?$ index.php?go=registration
+RewriteRule ^forgetpass?$ index.php?go=forgetpass
+RewriteRule ^dashboard?$ index.php?go=profile
+RewriteRule ^dashboard-test?$ index.php?go=profile-test
+RewriteRule ^viva?$ index.php?go=viva
+RewriteRule ^score?$ index.php?go=score
+RewriteRule ^dismis?$ index.php?go=dismis
+RewriteRule ^logout?$ index.php?go=logout
+RewriteRule ^quiz-end?$ index.php?go=quiz
+RewriteRule ^admin131?$ index.php?go=admin131
+RewriteRule ^questions?$ phpages/fetchdata.php
+RewriteRule ^result?$ phpages/result.php
+RewriteRule ^final-round?$ index.php?go=final-round
+RewriteRule ^final-quiz-end?$ index.php?go=final-quiz
+RewriteRule ^final-questions?$ phpages/final-fetchdata.php
+RewriteRule ^final-result?$ phpages/final-result.php
+
+
+RewriteRule ^reset/([a-zA-Z0-9-]+)/([a-zA-Z0-9-]+)$ phpages/reset-pass.php?typeId=password&userId=$1&requestId=$2 [NC,L]
